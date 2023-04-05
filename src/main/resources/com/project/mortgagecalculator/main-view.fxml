@@ -100,7 +100,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="exportBtn" layoutX="607.0" layoutY="427.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="184.0" text="Export to Excel">
+      <Button fx:id="exportBtn" layoutX="607.0" layoutY="427.0" mnemonicParsing="false" onAction="#export" prefHeight="85.0" prefWidth="184.0" text="Export to Excel">
          <font>
             <Font size="22.0" />
          </font>

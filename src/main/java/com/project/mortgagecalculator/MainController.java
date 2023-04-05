@@ -103,4 +103,20 @@ public class MainController {
         System.out.println("Monthly payment: " + mortgage.getMonthlyPayment());
     }
 
+    public void export()
+    {
+        getInfoLoan();
+
+        double totalSum = mortgage.getTotalSum();
+        double totalPayment = mortgage.getTotalPayment();
+        double monthlyPayment = mortgage.getMonthlyPayment();
+        double totalInterest = mortgage.getTotalInterest();
+        double leftToPay = totalSum - monthlyPayment;
+
+
+
+
+        System.out.println("Monthly payment: " + mortgage.getMonthlyPayment());
+    }
+
 }
