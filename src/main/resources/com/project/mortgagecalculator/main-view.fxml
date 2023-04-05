@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="1211.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.mortgagecalculator.MainController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="262.0" text="Home value:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="valueTxt" layoutX="14.0" layoutY="49.0" promptText="f. ex.: 250000">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+      <Label layoutX="15.0" layoutY="105.0" prefHeight="35.0" prefWidth="262.0" text="Down payment:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="downPaymentTxt" layoutX="15.0" layoutY="140.0" promptText="f. ex.: 5000">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+      <Label layoutX="15.0" layoutY="215.0" prefHeight="35.0" prefWidth="262.0" text="Interest rate:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="interestTxt" layoutX="15.0" layoutY="250.0" prefHeight="46.0" prefWidth="224.0" promptText="f. ex.: 7.2">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+      <Label layoutX="14.0" layoutY="323.0" prefHeight="35.0" prefWidth="262.0" text="Loan term:">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="loanTermTxt" layoutX="15.0" layoutY="358.0" prefHeight="46.0" prefWidth="224.0" promptText="f. ex.: 30">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+      <RadioButton fx:id="annuityRBtn" layoutX="14.0" layoutY="427.0" mnemonicParsing="false" text="Annuity">
+         <font>
+            <Font size="22.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="loanType" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="linearRBtn" layoutX="14.0" layoutY="479.0" mnemonicParsing="false" text="Linear" toggleGroup="$loanType">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </RadioButton>
+      <Button fx:id="calculateBtn" layoutX="151.0" layoutY="427.0" mnemonicParsing="false" onAction="#calculate" prefHeight="85.0" prefWidth="134.0" text="Calculate">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Text layoutX="267.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="251.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="years">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <LineChart fx:id="chart" layoutX="353.0" layoutY="15.0" prefHeight="400.0" prefWidth="552.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Label layoutX="936.0" layoutY="14.0" prefHeight="35.0" prefWidth="160.0" text="View payments">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="936.0" layoutY="237.0" prefHeight="35.0" prefWidth="160.0" text="Delay payments">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button fx:id="exportBtn" layoutX="607.0" layoutY="427.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="184.0" text="Export to Excel">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Text fontSmoothingType="LCD" layoutX="904.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text fontSmoothingType="LCD" layoutX="904.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Button fx:id="viewBtn" layoutX="967.0" layoutY="456.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="160.0" text="View in chart">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Text fontSmoothingType="LCD" layoutX="904.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text fontSmoothingType="LCD" layoutX="904.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="viewFromTxt" layoutX="966.0" layoutY="65.0" prefHeight="46.0" prefWidth="224.0" promptText="Input month">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="viewToTxt" layoutX="966.0" layoutY="127.0" prefHeight="46.0" prefWidth="224.0" promptText="Input month">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="delayFromTxt" layoutX="966.0" layoutY="298.0" prefHeight="46.0" prefWidth="224.0" promptText="Input month">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="delayToTxt" layoutX="966.0" layoutY="358.0" prefHeight="46.0" prefWidth="224.0" promptText="Input month">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
