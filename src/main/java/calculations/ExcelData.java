@@ -6,13 +6,8 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.*;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 
@@ -23,32 +18,44 @@ public class ExcelData {
         XSSFWorkbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Data");
 
+        int cellWidth = 7000;
+        sheet.setColumnWidth(0, cellWidth);
+        sheet.setColumnWidth(1, cellWidth);
+        sheet.setColumnWidth(2, cellWidth);
+        sheet.setColumnWidth(3, cellWidth);
+
         Row header = sheet.createRow(0);
 
         CellStyle headerStyle = workbook.createCellStyle();
-        headerStyle.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
+        headerStyle.setFillForegroundColor(IndexedColors.LIGHT_GREEN.getIndex());
         headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
-        XSSFFont font = ((XSSFWorkbook) workbook).createFont();
+        XSSFFont font = workbook.createFont();
         font.setFontName("Arial");
         font.setFontHeightInPoints((short) 16);
         font.setBold(true);
         headerStyle.setFont(font);
 
         Cell headerCell = header.createCell(0);
-        headerCell.setCellValue("Name");
+        headerCell.setCellValue("Menesio suma");
         headerCell.setCellStyle(headerStyle);
 
         headerCell = header.createCell(1);
-        headerCell.setCellValue("Age");
+        headerCell.setCellValue("Paskolos dalis(%)");
         headerCell.setCellStyle(headerStyle);
 
+        headerCell = header.createCell(2);
+        headerCell.setCellValue("Palukanu dalis(%)");
+        headerCell.setCellStyle(headerStyle);
 
+        headerCell = header.createCell(3);
+        headerCell.setCellValue("Paskolos likutis");
+        headerCell.setCellStyle(headerStyle);
 
         CellStyle style = workbook.createCellStyle();
         style.setWrapText(true);
 
-        Row row = sheet.createRow(2);
+        Row row = sheet.createRow(1);
         Cell cell = row.createCell(0);
         cell.setCellValue("John Smith");
         cell.setCellStyle(style);
