@@ -12,7 +12,7 @@ public class Mortgage {
     private int delayFrom;
     private int delayTo;
     private double delayInterest;
-    private double monthlyPayment;
+    private double[] monthlyPayment;
     private double[] monthlyPayments;
     private double totalPayment;
     private double totalInterest;
@@ -54,7 +54,7 @@ public class Mortgage {
     public void setDelayInterest(double delayInterest){
         this.delayInterest = delayInterest;
     }
-    public void setMonthlyPaymentAnnuity(double monthlyPayment){
+    public void setMonthlyPaymentAnnuity(double[] monthlyPayment){
         this.monthlyPayment = monthlyPayment;
     }
 
@@ -132,7 +132,7 @@ public class Mortgage {
     public double getDelayInterest(){
         return delayInterest;
     }
-    public double getMonthlyPaymentAnnuity(){
+    public double[] getMonthlyPaymentAnnuity(){
         return monthlyPayment;
     }
     public double[] getMonthlyPaymentLinear(){
