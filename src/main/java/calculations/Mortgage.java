@@ -19,6 +19,8 @@ public class Mortgage {
     private double totalFilter;
     private double totalSum;
 
+    private double[] monthlyBalance;
+
 
     // Setters
     public void setValue(double value){
@@ -75,6 +77,10 @@ public class Mortgage {
         this.isLinear = isLinear;
     }
 
+    public void setMonthlyBalance(double[] monthlyBalance){
+        this.monthlyBalance = monthlyBalance;
+    }
+
 
 
     // Getters
@@ -129,5 +135,6 @@ public class Mortgage {
     public double getTotalSum(){
         return totalSum;
     }
+    public double[] getMonthlyBalance(){return monthlyBalance;}
 
 }

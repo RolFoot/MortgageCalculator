@@ -88,6 +88,15 @@ public class MainController {
         {
             mortgage.setMonthlyPaymentAnnuity(calculations.calculateMonthlyPaymentAnnuity(mortgage));
             System.out.println("Monthly payment: " + mortgage.getMonthlyPaymentAnnuity());
+
+            mortgage.setMonthlyBalance(calculations.loanBalance(mortgage));
+
+            double[] monthlyBalance = mortgage.getMonthlyBalance();
+
+            for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
+            {
+                System.out.println("Monthly balance: " + monthlyBalance[i]);
+            }
         }
         else if (mortgage.getIsLinear())
         {
@@ -95,10 +104,10 @@ public class MainController {
 
             double[] monthlyPayments = mortgage.getMonthlyPaymentLinear();
 
-            for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
+            /*for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
             {
                 System.out.println("Monthly payment: " + monthlyPayments[i]);
-            }
+            }*/
         }
     }
 
@@ -111,11 +120,6 @@ public class MainController {
         double monthlyPayment = mortgage.getMonthlyPaymentAnnuity();
         double totalInterest = mortgage.getTotalInterest();
         double leftToPay = totalSum - monthlyPayment;
-
-
-
-
-        System.out.println("Monthly payment: " + mortgage.getMonthlyPaymentAnnuity());
     }
 
 }

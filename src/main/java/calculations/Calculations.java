@@ -42,4 +42,39 @@ public class Calculations {
 
         return monthlyPayments;
     }
+
+
+
+    public double calculateLoanPart(Mortgage mortgage)
+    {
+        // Loan part (%)
+
+
+        return 0;
+    }
+
+    public double calculateInterestPart(Mortgage mortgage) {
+        // Interest part (%)
+        return 0;
+    }
+
+    public double[] loanBalance(Mortgage mortgage) {
+        double interest = mortgage.getInterest() / 100 / MONTHS_IN_YEAR;
+        double value = mortgage.getValue() - mortgage.getDownPayment();
+        int term = mortgage.getLoanTerm() * MONTHS_IN_YEAR;
+        double monthlyPayment = mortgage.getMonthlyPaymentAnnuity();
+
+        // Loan Balance = Previous Loan Balance - Monthly Payment + (Previous Loan Balance * Monthly Interest Rate)
+
+        double[] balance = new double[term];
+        balance[0] = value;
+        double monthlyInterest;
+
+        for (int i = 1; i < term; i++) {
+            monthlyInterest = balance[i-1] * interest;
+            balance[i] = balance[i-1] - monthlyPayment + monthlyInterest;
+        }
+
+        return balance;
+    }
 }
