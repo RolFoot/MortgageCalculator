@@ -104,7 +104,7 @@ public class MainController {
         getInfoLoan();
         getInfoDelay();
 
-        if (mortgage.getIsAnnuity()) {
+        /*if (mortgage.getIsAnnuity()) {
             mortgage.setMonthlyPaymentAnnuity(calculations.calculateMonthlyPaymentAnnuity(mortgage));
 
             mortgage.setMonthlyBalance(calculations.loanBalanceAnnuity(mortgage));
@@ -124,6 +124,12 @@ public class MainController {
             mortgage.setInterestPart(calculations.calculateInterestPartLinear(mortgage));
 
             calculated = true;
+        }*/
+
+        mortgage.setMonthlyPayment(calculations.calculateMonthlyPayment(mortgage));
+
+        for(int i = 0; i < mortgage.getLoanTerm(); i++) {
+            System.out.println(mortgage.getMonthlyPayment()[i]);
         }
     }
 

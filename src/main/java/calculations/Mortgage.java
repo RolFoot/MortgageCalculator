@@ -61,6 +61,12 @@ public class Mortgage {
     public void setMonthlyPaymentLinear(double[] monthlyPayments){
         this.monthlyPayments = monthlyPayments;
     }
+
+
+    public void setMonthlyPayment(double[] monthlyPayments){
+        this.monthlyPayments = monthlyPayments;
+    }
+
     public void setTotalPayment(double totalPayment){
         this.totalPayment = totalPayment;
     }
@@ -138,6 +144,9 @@ public class Mortgage {
     public double[] getMonthlyPaymentLinear(){
         return monthlyPayments;
     }
+
+    public double[] getMonthlyPayment(){return monthlyPayments;}
+
     public double getTotalPayment(){
         return totalPayment;
     }
