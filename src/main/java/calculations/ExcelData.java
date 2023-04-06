@@ -60,11 +60,17 @@ public class ExcelData {
         CellStyle style = workbook.createCellStyle();
         style.setWrapText(true);
 
-        for(int i=0;i<(mortgage.getLoanTerm()*12);i++)
+        boolean annuity = mortgage.getIsAnnuity();
+
+        for(int i=0;i<(mortgage.getLoanTerm());i++)
         {
             Row row = sheet.createRow(i+1);
+
             Cell cell = row.createCell(0);
-            cell.setCellValue(Double.toString(Precision.round(mortgage.getMonthlyPaymentAnnuity(), 2)));
+            if(annuity)
+                cell.setCellValue(Double.toString(Precision.round(mortgage.getMonthlyPaymentAnnuity(), 2)));
+            else
+                cell.setCellValue(Double.toString(Precision.round(mortgage.getMonthlyPaymentLinear()[i], 2)));
             cell.setCellStyle(style);
 
             cell = row.createCell(1);

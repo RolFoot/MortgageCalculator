@@ -11,6 +11,7 @@ public class Mortgage {
     private int viewTo;
     private int delayFrom;
     private int delayTo;
+    private double delayInterest;
     private double monthlyPayment;
     private double[] monthlyPayments;
     private double totalPayment;
@@ -49,6 +50,9 @@ public class Mortgage {
     }
     public void setDelayTo(int delayTo){
         this.delayTo = delayTo;
+    }
+    public void setDelayInterest(double delayInterest){
+        this.delayInterest = delayInterest;
     }
     public void setMonthlyPaymentAnnuity(double monthlyPayment){
         this.monthlyPayment = monthlyPayment;
@@ -124,6 +128,9 @@ public class Mortgage {
     }
     public int getDelayTo(){
         return delayTo;
+    }
+    public double getDelayInterest(){
+        return delayInterest;
     }
     public double getMonthlyPaymentAnnuity(){
         return monthlyPayment;

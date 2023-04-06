@@ -82,7 +82,7 @@
             <Font size="22.0" />
          </font>
       </Text>
-      <LineChart fx:id="chart" layoutX="353.0" layoutY="15.0" prefHeight="400.0" prefWidth="552.0">
+      <LineChart fx:id="chart" layoutX="330.0" layoutY="15.0" prefHeight="400.0" prefWidth="552.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -95,12 +95,12 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="936.0" layoutY="237.0" prefHeight="35.0" prefWidth="160.0" text="Delay payments">
+      <Label layoutX="936.0" layoutY="204.0" prefHeight="35.0" prefWidth="160.0" text="Delay payments">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="exportBtn" layoutX="607.0" layoutY="427.0" mnemonicParsing="false" onAction="#export" prefHeight="85.0" prefWidth="184.0" text="Export to Excel">
+      <Button fx:id="exportBtn" layoutX="538.0" layoutY="427.0" mnemonicParsing="false" onAction="#export" prefHeight="85.0" prefWidth="184.0" text="Export to Excel">
          <font>
             <Font size="22.0" />
          </font>
@@ -120,12 +120,12 @@
             <Font size="22.0" />
          </font>
       </Button>
-      <Text fontSmoothingType="LCD" layoutX="904.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
+      <Text fontSmoothingType="LCD" layoutX="904.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
          <font>
             <Font size="22.0" />
          </font>
       </Text>
-      <Text fontSmoothingType="LCD" layoutX="904.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
+      <Text fontSmoothingType="LCD" layoutX="904.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
          <font>
             <Font size="22.0" />
          </font>
@@ -140,15 +140,25 @@
             <Font size="22.0" />
          </font>
       </TextField>
-      <TextField fx:id="delayFromTxt" layoutX="966.0" layoutY="298.0" prefHeight="46.0" prefWidth="224.0" promptText="Input month">
+      <TextField fx:id="delayFromTxt" layoutX="966.0" layoutY="265.0" prefHeight="46.0" prefWidth="224.0" promptText="Input month" text="0">
          <font>
             <Font size="22.0" />
          </font>
       </TextField>
-      <TextField fx:id="delayToTxt" layoutX="966.0" layoutY="358.0" prefHeight="46.0" prefWidth="224.0" promptText="Input month">
+      <TextField fx:id="delayToTxt" layoutX="966.0" layoutY="325.0" prefHeight="46.0" prefWidth="224.0" promptText="Input month" text="0">
          <font>
             <Font size="22.0" />
          </font>
       </TextField>
+      <TextField fx:id="delayInterestTxt" layoutX="966.0" layoutY="392.0" prefHeight="46.0" prefWidth="224.0" promptText="Input rate(%)" text="0">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </TextField>
+      <Text fontSmoothingType="LCD" layoutX="836.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interest rate">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

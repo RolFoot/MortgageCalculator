@@ -45,6 +45,9 @@ public class MainController {
     private TextField delayToTxt;
 
     @FXML
+    private TextField delayInterestTxt;
+
+    @FXML
     private LineChart chart;
 
     Mortgage mortgage = new Mortgage();
@@ -58,7 +61,7 @@ public class MainController {
             mortgage.setValue(Double.parseDouble(valueTxt.getText()));
             mortgage.setDownPayment(Double.parseDouble(downPaymentTxt.getText()));
             mortgage.setInterest(Double.parseDouble(interestTxt.getText()));
-            mortgage.setLoanTerm(Integer.parseInt(loanTermTxt.getText()));
+            mortgage.setLoanTerm(Integer.parseInt(loanTermTxt.getText())*12);
             mortgage.setAnnuity(annuityRBtn.isSelected());
             mortgage.setLinear(linearRBtn.isSelected());
         } catch (Exception e) {
@@ -87,6 +90,7 @@ public class MainController {
         try {
             mortgage.setDelayFrom(Integer.parseInt(delayFromTxt.getText()));
             mortgage.setDelayTo(Integer.parseInt(delayToTxt.getText()));
+            mortgage.setDelayInterest(Double.parseDouble(delayInterestTxt.getText()));
         } catch (Exception e) {
             System.out.println("Error: " + e);
             Alert a = new Alert(Alert.AlertType.ERROR);
@@ -98,6 +102,7 @@ public class MainController {
 
     public void calculate() {
         getInfoLoan();
+        getInfoDelay();
 
         if (mortgage.getIsAnnuity()) {
             mortgage.setMonthlyPaymentAnnuity(calculations.calculateMonthlyPaymentAnnuity(mortgage));
