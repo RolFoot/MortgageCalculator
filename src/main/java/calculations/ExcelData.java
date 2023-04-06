@@ -1,6 +1,7 @@
 package calculations;
 
 
+import org.apache.commons.math3.util.Precision;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.*;
@@ -8,8 +9,6 @@ import org.apache.poi.xssf.usermodel.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-
 
 public class ExcelData {
 
@@ -62,7 +61,27 @@ public class ExcelData {
         CellStyle style = workbook.createCellStyle();
         style.setWrapText(true);
 
-        Row row = sheet.createRow(2);
+        for(int i=0;i<(mortgage.getLoanTerm()*12);i++)
+        {
+            Row row = sheet.createRow(i+1);
+            Cell cell = row.createCell(0);
+            cell.setCellValue(Double.toString(Precision.round(mortgage.getMonthlyPaymentAnnuity(), 2)));
+            cell.setCellStyle(style);
+
+            cell = row.createCell(1);
+            cell.setCellValue(Double.toString(Precision.round(mortgage.getLoanPart()[i],2)));
+            cell.setCellStyle(style);
+
+            cell = row.createCell(2);
+            cell.setCellValue(Double.toString(Precision.round(mortgage.getInterestPart()[i],2)));
+            cell.setCellStyle(style);
+
+            cell = row.createCell(3);
+            cell.setCellValue(Double.toString(Precision.round(mortgage.getMonthlyBalance()[i],2)));
+            cell.setCellStyle(style);
+        }
+
+        /*Row row = sheet.createRow(1);
         Cell cell = row.createCell(0);
         cell.setCellValue(Double.toString(mortgage.getMonthlyPaymentAnnuity()));
         cell.setCellStyle(style);
@@ -78,7 +97,7 @@ public class ExcelData {
 
         cell = row.createCell(3);
         cell.setCellValue(Double.toString(mortgage.getMonthlyBalance()[0]));
-        cell.setCellStyle(style);
+        cell.setCellStyle(style);*/
 
 
 
