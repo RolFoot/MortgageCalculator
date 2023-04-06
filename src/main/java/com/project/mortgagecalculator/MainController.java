@@ -89,7 +89,7 @@ public class MainController {
             mortgage.setMonthlyPaymentAnnuity(calculations.calculateMonthlyPaymentAnnuity(mortgage));
             System.out.println("Monthly payment: " + mortgage.getMonthlyPaymentAnnuity());
 
-            mortgage.setMonthlyBalance(calculations.loanBalance(mortgage));
+            mortgage.setMonthlyBalance(calculations.loanBalanceAnnuity(mortgage));
 
             double[] monthlyBalance = mortgage.getMonthlyBalance();
 
@@ -108,6 +108,15 @@ public class MainController {
             {
                 System.out.println("Monthly payment: " + monthlyPayments[i]);
             }*/
+
+            mortgage.setMonthlyBalance(calculations.loanBalanceLinear(mortgage));
+
+            double[] monthlyBalance = mortgage.getMonthlyBalance();
+
+            for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
+            {
+                System.out.println("Monthly balance: " + monthlyBalance[i]);
+            }
         }
     }
 
