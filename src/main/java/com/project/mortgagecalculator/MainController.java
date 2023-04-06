@@ -5,11 +5,11 @@ import calculations.ExcelData;
 import calculations.Mortgage;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-
 
 
 public class MainController {
@@ -51,8 +51,9 @@ public class MainController {
 
     Calculations calculations = new Calculations();
 
-    public void getInfoLoan()
-    {
+    private boolean calculated = false;
+
+    public void getInfoLoan() {
         try {
             mortgage.setValue(Double.parseDouble(valueTxt.getText()));
             mortgage.setDownPayment(Double.parseDouble(downPaymentTxt.getText()));
@@ -62,104 +63,70 @@ public class MainController {
             mortgage.setLinear(linearRBtn.isSelected());
         } catch (Exception e) {
             System.out.println("Error: " + e);
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("Invalid Input");
+            a.setContentText("Error: " + e);
+            a.show();
         }
     }
 
-    public void getInfoView()
-    {
+    public void getInfoView() {
         try {
             mortgage.setViewFrom(Integer.parseInt(viewFromTxt.getText()));
             mortgage.setViewTo(Integer.parseInt(viewToTxt.getText()));
         } catch (Exception e) {
             System.out.println("Error: " + e);
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("Invalid Input");
+            a.setContentText("Error: " + e);
+            a.show();
         }
     }
 
-    public void getInfoDelay()
-    {
+    public void getInfoDelay() {
         try {
             mortgage.setDelayFrom(Integer.parseInt(delayFromTxt.getText()));
             mortgage.setDelayTo(Integer.parseInt(delayToTxt.getText()));
         } catch (Exception e) {
             System.out.println("Error: " + e);
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle("Invalid Input");
+            a.setContentText("Error: " + e);
+            a.show();
         }
     }
 
-    public void calculate()
-    {
+    public void calculate() {
         getInfoLoan();
 
-        if (mortgage.getIsAnnuity())
-        {
+        if (mortgage.getIsAnnuity()) {
             mortgage.setMonthlyPaymentAnnuity(calculations.calculateMonthlyPaymentAnnuity(mortgage));
-            System.out.println("Monthly payment: " + mortgage.getMonthlyPaymentAnnuity());
 
             mortgage.setMonthlyBalance(calculations.loanBalanceAnnuity(mortgage));
 
-            double[] monthlyBalance = mortgage.getMonthlyBalance();
-
-            /*for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
-            {
-                System.out.println("Monthly balance: " + monthlyBalance[i]);
-            }*/
-
             mortgage.setLoanPart(calculations.calculateLoanPartAnnuity(mortgage));
 
-            double[] loanPart = mortgage.getLoanPart();
-
-            /*for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
-            {
-                System.out.println("Loan part: " + loanPart[i]);
-            }*/
-
             mortgage.setInterestPart(calculations.calculateInterestPartAnnuity(mortgage));
-            double[] interestPart = mortgage.getInterestPart();
 
-            for (int i = 0; i < (mortgage.getLoanTerm() * 12); i++) {
-                System.out.println("Interest part: " + interestPart[i]);
-            }
-
-        }
-        else if (mortgage.getIsLinear())
-        {
+            calculated = true;
+        } else if (mortgage.getIsLinear()) {
             mortgage.setMonthlyPaymentLinear(calculations.calculateMonthlyPaymentLinear(mortgage));
-
-            double[] monthlyPayments = mortgage.getMonthlyPaymentLinear();
-
-            /*for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
-            {
-                System.out.println("Monthly payment: " + monthlyPayments[i]);
-            }*/
 
             mortgage.setMonthlyBalance(calculations.loanBalanceLinear(mortgage));
 
-            double[] monthlyBalance = mortgage.getMonthlyBalance();
-
-            /*for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
-            {
-                System.out.println("Monthly balance: " + monthlyBalance[i]);
-            }*/
-
             mortgage.setLoanPart(calculations.calculateLoanPartLinear(mortgage));
 
-            double[] loanPart = mortgage.getLoanPart();
-
-            /*for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
-            {
-                System.out.println("Loan part: " + loanPart[i]);
-            }*/
-
             mortgage.setInterestPart(calculations.calculateInterestPartLinear(mortgage));
-            double[] interestPart = mortgage.getInterestPart();
 
-            for (int i = 0; i < (mortgage.getLoanTerm() * 12); i++) {
-                System.out.println("Interest part: " + interestPart[i]);
-            }
+            calculated = true;
         }
     }
 
     public void export() throws IOException {
-        ExcelData excelData = new ExcelData(mortgage);
+        if (!calculated)
+            calculate();
+
+        new ExcelData(mortgage);
     }
 
 }
