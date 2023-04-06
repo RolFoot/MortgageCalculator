@@ -13,7 +13,9 @@ import java.io.IOException;
 
 public class ExcelData {
 
-    public ExcelData() throws IOException {
+    public ExcelData(Mortgage mortgage) throws IOException {
+
+
 
         XSSFWorkbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet("Data");
@@ -23,6 +25,8 @@ public class ExcelData {
         sheet.setColumnWidth(1, cellWidth);
         sheet.setColumnWidth(2, cellWidth);
         sheet.setColumnWidth(3, cellWidth);
+
+        // Headers
 
         Row header = sheet.createRow(0);
 
@@ -52,18 +56,33 @@ public class ExcelData {
         headerCell.setCellValue("Loan balance");
         headerCell.setCellStyle(headerStyle);
 
+
+        // Data
+
         CellStyle style = workbook.createCellStyle();
         style.setWrapText(true);
 
-        Row row = sheet.createRow(1);
+        Row row = sheet.createRow(2);
         Cell cell = row.createCell(0);
-        cell.setCellValue("John Smith");
+        cell.setCellValue(Double.toString(mortgage.getMonthlyPaymentAnnuity()));
         cell.setCellStyle(style);
 
         cell = row.createCell(1);
-        cell.setCellValue(20);
+        cell.setCellValue(Double.toString(mortgage.getLoanPart()[0]));
         cell.setCellStyle(style);
 
+        cell = row.createCell(2);
+        cell.setCellValue(Double.toString(mortgage.getInterestPart()[0]));
+        cell.setCellStyle(style);
+
+
+        cell = row.createCell(3);
+        cell.setCellValue(Double.toString(mortgage.getMonthlyBalance()[0]));
+        cell.setCellStyle(style);
+
+
+
+        // Save to file
 
         File currDir = new File(".");
         String path = currDir.getAbsolutePath();

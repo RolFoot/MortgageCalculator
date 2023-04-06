@@ -1,6 +1,5 @@
 package com.project.mortgagecalculator;
 
-import calculations.ExcelData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,7 +16,6 @@ public class MainApplication extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-        ExcelData excelData = new ExcelData();
     }
 
     public static void main(String[] args) {

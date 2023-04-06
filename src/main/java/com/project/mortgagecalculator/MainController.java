@@ -1,11 +1,16 @@
 package com.project.mortgagecalculator;
 
 import calculations.Calculations;
+import calculations.ExcelData;
 import calculations.Mortgage;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
+
+
 
 public class MainController {
 
@@ -153,15 +158,8 @@ public class MainController {
         }
     }
 
-    public void export()
-    {
-        getInfoLoan();
-
-        double totalSum = mortgage.getTotalSum();
-        double totalPayment = mortgage.getTotalPayment();
-        double monthlyPayment = mortgage.getMonthlyPaymentAnnuity();
-        double totalInterest = mortgage.getTotalInterest();
-        double leftToPay = totalSum - monthlyPayment;
+    public void export() throws IOException {
+        ExcelData excelData = new ExcelData(mortgage);
     }
 
 }
