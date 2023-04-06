@@ -22,6 +22,7 @@ public class Mortgage {
     private double[] monthlyBalance;
 
     private double[] loanPart;
+    private double[] interestPart;
 
 
     // Setters
@@ -87,6 +88,10 @@ public class Mortgage {
         this.loanPart = loanPart;
     }
 
+    public void setInterestPart(double[] interestPart){
+        this.interestPart = interestPart;
+    }
+
 
 
     // Getters
@@ -145,5 +150,9 @@ public class Mortgage {
 
     public double[] getLoanPart(){
         return loanPart;
+    }
+
+    public double[] getInterestPart(){
+        return interestPart;
     }
 }

@@ -102,9 +102,16 @@ public class MainController {
 
             double[] loanPart = mortgage.getLoanPart();
 
-            for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
+            /*for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
             {
                 System.out.println("Loan part: " + loanPart[i]);
+            }*/
+
+            mortgage.setInterestPart(calculations.calculateInterestPartAnnuity(mortgage));
+            double[] interestPart = mortgage.getInterestPart();
+
+            for (int i = 0; i < (mortgage.getLoanTerm() * 12); i++) {
+                System.out.println("Interest part: " + interestPart[i]);
             }
 
         }
@@ -132,9 +139,16 @@ public class MainController {
 
             double[] loanPart = mortgage.getLoanPart();
 
-            for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
+            /*for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
             {
                 System.out.println("Loan part: " + loanPart[i]);
+            }*/
+
+            mortgage.setInterestPart(calculations.calculateInterestPartLinear(mortgage));
+            double[] interestPart = mortgage.getInterestPart();
+
+            for (int i = 0; i < (mortgage.getLoanTerm() * 12); i++) {
+                System.out.println("Interest part: " + interestPart[i]);
             }
         }
     }

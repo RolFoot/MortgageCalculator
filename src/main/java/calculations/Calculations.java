@@ -87,6 +87,18 @@ public class Calculations {
         // Interest part (%)
 
         double[] interestPart = new double[mortgage.getLoanTerm() * MONTHS_IN_YEAR];
+        double interest = mortgage.getInterest() / 100 / MONTHS_IN_YEAR;
+
+        double monthlyPayment = mortgage.getMonthlyPaymentAnnuity();
+
+        double[] monthlyBalance = mortgage.getMonthlyBalance();
+
+        double[] loanPart = mortgage.getLoanPart();
+
+        for(int i = 0; i < (mortgage.getLoanTerm() * MONTHS_IN_YEAR); i++)
+        {
+            interestPart[i] = (monthlyPayment - (loanPart[i]/100 * monthlyPayment))/monthlyPayment*100;
+        }
 
         return interestPart;
     }
@@ -95,6 +107,18 @@ public class Calculations {
         // Interest part (%)
 
         double[] interestPart = new double[mortgage.getLoanTerm() * MONTHS_IN_YEAR];
+        double interest = mortgage.getInterest() / 100 / MONTHS_IN_YEAR;
+
+        double[] monthlyPayment = mortgage.getMonthlyPaymentLinear();
+
+        double[] monthlyBalance = mortgage.getMonthlyBalance();
+
+        double[] loanPart = mortgage.getLoanPart();
+
+        for(int i = 0; i < (mortgage.getLoanTerm() * MONTHS_IN_YEAR); i++)
+        {
+            interestPart[i] = (monthlyPayment[i] - (loanPart[i]/100 * monthlyPayment[i]))/monthlyPayment[i]*100;
+        }
 
         return interestPart;
 
