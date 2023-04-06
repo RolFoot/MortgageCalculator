@@ -37,19 +37,19 @@ public class ExcelData {
         headerStyle.setFont(font);
 
         Cell headerCell = header.createCell(0);
-        headerCell.setCellValue("Menesio suma");
+        headerCell.setCellValue("Monthly payment");
         headerCell.setCellStyle(headerStyle);
 
         headerCell = header.createCell(1);
-        headerCell.setCellValue("Paskolos dalis(%)");
+        headerCell.setCellValue("Loan part(%)");
         headerCell.setCellStyle(headerStyle);
 
         headerCell = header.createCell(2);
-        headerCell.setCellValue("Palukanu dalis(%)");
+        headerCell.setCellValue("Interest part(%)");
         headerCell.setCellStyle(headerStyle);
 
         headerCell = header.createCell(3);
-        headerCell.setCellValue("Paskolos likutis");
+        headerCell.setCellValue("Loan balance");
         headerCell.setCellStyle(headerStyle);
 
         CellStyle style = workbook.createCellStyle();
@@ -67,7 +67,7 @@ public class ExcelData {
 
         File currDir = new File(".");
         String path = currDir.getAbsolutePath();
-        String fileLocation = path.substring(0, path.length() - 1) + "output/ataskaita.xlsx";
+        String fileLocation = path.substring(0, path.length() - 1) + "output/report.xlsx";
 
 
         FileOutputStream outputStream = new FileOutputStream(fileLocation);
