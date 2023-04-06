@@ -25,8 +25,8 @@ public class ExcelData {
         sheet.setColumnWidth(2, cellWidth);
         sheet.setColumnWidth(3, cellWidth);
 
-        // Headers
 
+        // Headers
         Row header = sheet.createRow(0);
 
         CellStyle headerStyle = workbook.createCellStyle();
@@ -57,7 +57,6 @@ public class ExcelData {
 
 
         // Data
-
         CellStyle style = workbook.createCellStyle();
         style.setWrapText(true);
 
@@ -81,28 +80,8 @@ public class ExcelData {
             cell.setCellStyle(style);
         }
 
-        /*Row row = sheet.createRow(1);
-        Cell cell = row.createCell(0);
-        cell.setCellValue(Double.toString(mortgage.getMonthlyPaymentAnnuity()));
-        cell.setCellStyle(style);
-
-        cell = row.createCell(1);
-        cell.setCellValue(Double.toString(mortgage.getLoanPart()[0]));
-        cell.setCellStyle(style);
-
-        cell = row.createCell(2);
-        cell.setCellValue(Double.toString(mortgage.getInterestPart()[0]));
-        cell.setCellStyle(style);
-
-
-        cell = row.createCell(3);
-        cell.setCellValue(Double.toString(mortgage.getMonthlyBalance()[0]));
-        cell.setCellStyle(style);*/
-
-
 
         // Save to file
-
         File currDir = new File(".");
         String path = currDir.getAbsolutePath();
         String fileLocation = path.substring(0, path.length() - 1) + "output/report.xlsx";
