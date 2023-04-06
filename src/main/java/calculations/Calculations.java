@@ -73,8 +73,10 @@ public class Calculations {
         int delayFrom = mortgage.getDelayFrom();
         int delayTo = mortgage.getDelayTo();
 
-        for (int i = 0; i < term; i++) {
-            if ((i >= delayFrom && i <= delayTo) && (delayTo - delayFrom > 0))
+        int currentMonth = 1;
+
+        for (int i = 0; i < term; i++, currentMonth++) {
+            if ((currentMonth >= delayFrom && currentMonth <= delayTo) && (delayTo - delayFrom > 0))
                 loanPart[i] = 0;
             else
                 loanPart[i] = (monthlyPayments[i] - (monthlyBalance[i] * interest)) / monthlyPayments[i] * 100;
@@ -87,7 +89,6 @@ public class Calculations {
         // Interest part (%)
 
         double[] interestPart = new double[mortgage.getLoanTerm()];
-        double interest = mortgage.getInterest() / 100 / MONTHS_IN_YEAR;
 
         double[] monthlyPayment = mortgage.getMonthlyPayment();
 
@@ -96,8 +97,10 @@ public class Calculations {
         int delayFrom = mortgage.getDelayFrom();
         int delayTo = mortgage.getDelayTo();
 
-        for (int i = 0; i < mortgage.getLoanTerm(); i++) {
-            if ((i >= delayFrom && i <= delayTo) && (delayTo - delayFrom > 0))
+        int currentMonth = 1;
+
+        for (int i = 0; i < mortgage.getLoanTerm(); i++, currentMonth++) {
+            if ((currentMonth >= delayFrom && currentMonth <= delayTo) && (delayTo - delayFrom > 0))
                 interestPart[i] = 0;
             else
                 interestPart[i] = (monthlyPayment[i] - (loanPart[i] / 100 * monthlyPayment[i])) / monthlyPayment[i] * 100;
