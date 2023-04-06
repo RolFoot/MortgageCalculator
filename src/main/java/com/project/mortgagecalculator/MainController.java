@@ -4,8 +4,6 @@ import calculations.Calculations;
 import calculations.Mortgage;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
@@ -28,15 +26,6 @@ public class MainController {
 
     @FXML
     private RadioButton linearRBtn;
-
-    @FXML
-    private Button calculateBtn;
-
-    @FXML
-    private Button exportBtn;
-
-    @FXML
-    private Button viewBtn;
 
     @FXML
     private TextField viewFromTxt;
@@ -66,9 +55,6 @@ public class MainController {
             mortgage.setLoanTerm(Integer.parseInt(loanTermTxt.getText()));
             mortgage.setAnnuity(annuityRBtn.isSelected());
             mortgage.setLinear(linearRBtn.isSelected());
-
-            mortgage.setDelayFrom(Integer.parseInt(delayFromTxt.getText()));
-            mortgage.setDelayTo(Integer.parseInt(delayToTxt.getText()));
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
@@ -98,9 +84,22 @@ public class MainController {
     {
         getInfoLoan();
 
-        mortgage.setMonthlyPayment(calculations.calculateMonthlyPayment(mortgage));
+        if (mortgage.getIsAnnuity())
+        {
+            mortgage.setMonthlyPaymentAnnuity(calculations.calculateMonthlyPaymentAnnuity(mortgage));
+            System.out.println("Monthly payment: " + mortgage.getMonthlyPaymentAnnuity());
+        }
+        else if (mortgage.getIsLinear())
+        {
+            mortgage.setMonthlyPaymentLinear(calculations.calculateMonthlyPaymentLinear(mortgage));
 
-        System.out.println("Monthly payment: " + mortgage.getMonthlyPayment());
+            double[] monthlyPayments = mortgage.getMonthlyPaymentLinear();
+
+            for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
+            {
+                System.out.println("Monthly payment: " + monthlyPayments[i]);
+            }
+        }
     }
 
     public void export()
@@ -109,14 +108,14 @@ public class MainController {
 
         double totalSum = mortgage.getTotalSum();
         double totalPayment = mortgage.getTotalPayment();
-        double monthlyPayment = mortgage.getMonthlyPayment();
+        double monthlyPayment = mortgage.getMonthlyPaymentAnnuity();
         double totalInterest = mortgage.getTotalInterest();
         double leftToPay = totalSum - monthlyPayment;
 
 
 
 
-        System.out.println("Monthly payment: " + mortgage.getMonthlyPayment());
+        System.out.println("Monthly payment: " + mortgage.getMonthlyPaymentAnnuity());
     }
 
 }

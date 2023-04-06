@@ -1,6 +1,5 @@
 package calculations;
 
-import com.project.mortgagecalculator.*;
 public class Mortgage {
     private double value;
     private double downPayment;
@@ -13,6 +12,7 @@ public class Mortgage {
     private int delayFrom;
     private int delayTo;
     private double monthlyPayment;
+    private double[] monthlyPayments;
     private double totalPayment;
     private double totalInterest;
     private double totalDelay;
@@ -33,12 +33,6 @@ public class Mortgage {
     public void setLoanTerm(int loanTerm){
         this.loanTerm = loanTerm;
     }
-    public void setIsAnnuity(boolean isAnnuity){
-        this.isAnnuity = isAnnuity;
-    }
-    public void setIsLinear(boolean isLinear){
-        this.isLinear = isLinear;
-    }
     public void setViewFrom(int viewFrom){
         this.viewFrom = viewFrom;
     }
@@ -51,8 +45,12 @@ public class Mortgage {
     public void setDelayTo(int delayTo){
         this.delayTo = delayTo;
     }
-    public void setMonthlyPayment(double monthlyPayment){
+    public void setMonthlyPaymentAnnuity(double monthlyPayment){
         this.monthlyPayment = monthlyPayment;
+    }
+
+    public void setMonthlyPaymentLinear(double[] monthlyPayments){
+        this.monthlyPayments = monthlyPayments;
     }
     public void setTotalPayment(double totalPayment){
         this.totalPayment = totalPayment;
@@ -110,8 +108,11 @@ public class Mortgage {
     public int getDelayTo(){
         return delayTo;
     }
-    public double getMonthlyPayment(){
+    public double getMonthlyPaymentAnnuity(){
         return monthlyPayment;
+    }
+    public double[] getMonthlyPaymentLinear(){
+        return monthlyPayments;
     }
     public double getTotalPayment(){
         return totalPayment;
