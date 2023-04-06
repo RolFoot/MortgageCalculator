@@ -21,6 +21,8 @@ public class Mortgage {
 
     private double[] monthlyBalance;
 
+    private double[] loanPart;
+
 
     // Setters
     public void setValue(double value){
@@ -81,6 +83,10 @@ public class Mortgage {
         this.monthlyBalance = monthlyBalance;
     }
 
+    public void setLoanPart(double[] loanPart){
+        this.loanPart = loanPart;
+    }
+
 
 
     // Getters
@@ -137,4 +143,7 @@ public class Mortgage {
     }
     public double[] getMonthlyBalance(){return monthlyBalance;}
 
+    public double[] getLoanPart(){
+        return loanPart;
+    }
 }

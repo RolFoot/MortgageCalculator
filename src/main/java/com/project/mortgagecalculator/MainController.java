@@ -93,10 +93,20 @@ public class MainController {
 
             double[] monthlyBalance = mortgage.getMonthlyBalance();
 
-            for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
+            /*for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
             {
                 System.out.println("Monthly balance: " + monthlyBalance[i]);
+            }*/
+
+            mortgage.setLoanPart(calculations.calculateLoanPartAnnuity(mortgage));
+
+            double[] loanPart = mortgage.getLoanPart();
+
+            for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
+            {
+                System.out.println("Loan part: " + loanPart[i]);
             }
+
         }
         else if (mortgage.getIsLinear())
         {
@@ -113,9 +123,18 @@ public class MainController {
 
             double[] monthlyBalance = mortgage.getMonthlyBalance();
 
-            for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
+            /*for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
             {
                 System.out.println("Monthly balance: " + monthlyBalance[i]);
+            }*/
+
+            mortgage.setLoanPart(calculations.calculateLoanPartLinear(mortgage));
+
+            double[] loanPart = mortgage.getLoanPart();
+
+            for(int i=0;i<(mortgage.getLoanTerm() * 12);i++)
+            {
+                System.out.println("Loan part: " + loanPart[i]);
             }
         }
     }

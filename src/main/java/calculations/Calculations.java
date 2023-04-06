@@ -45,17 +45,59 @@ public class Calculations {
 
 
 
-    public double calculateLoanPart(Mortgage mortgage)
+    public double[] calculateLoanPartAnnuity(Mortgage mortgage)
     {
         // Loan part (%)
 
+        double monthlyPayment = mortgage.getMonthlyPaymentAnnuity();
+        double[] loanPart = new double[mortgage.getLoanTerm() * MONTHS_IN_YEAR];
 
-        return 0;
+        double interest = mortgage.getInterest() / 100 / MONTHS_IN_YEAR;
+
+        double[] monthlyBalance = mortgage.getMonthlyBalance();
+
+        for(int i = 0; i < (mortgage.getLoanTerm() * MONTHS_IN_YEAR); i++)
+        {
+            loanPart[i] = (monthlyPayment - (monthlyBalance[i] * interest)) / monthlyPayment * 100;
+        }
+
+        return loanPart;
     }
 
-    public double calculateInterestPart(Mortgage mortgage) {
+    public double[] calculateLoanPartLinear(Mortgage mortgage)
+    {
+        // Loan part (%)
+
+        double[] monthlyPayments = mortgage.getMonthlyPaymentLinear();
+        double[] loanPart = new double[mortgage.getLoanTerm() * MONTHS_IN_YEAR];
+
+        double interest = mortgage.getInterest() / 100 / MONTHS_IN_YEAR;
+
+        double[] monthlyBalance = mortgage.getMonthlyBalance();
+
+        for(int i = 0; i < (mortgage.getLoanTerm() * MONTHS_IN_YEAR); i++)
+        {
+            loanPart[i] = (monthlyPayments[i] - (monthlyBalance[i] * interest)) / monthlyPayments[i] * 100;
+        }
+
+        return loanPart;
+    }
+
+    public double[] calculateInterestPartAnnuity(Mortgage mortgage) {
         // Interest part (%)
-        return 0;
+
+        double[] interestPart = new double[mortgage.getLoanTerm() * MONTHS_IN_YEAR];
+
+        return interestPart;
+    }
+
+    public double[] calculateInterestPartLinear(Mortgage mortgage) {
+        // Interest part (%)
+
+        double[] interestPart = new double[mortgage.getLoanTerm() * MONTHS_IN_YEAR];
+
+        return interestPart;
+
     }
 
     public double[] loanBalanceAnnuity(Mortgage mortgage) {
