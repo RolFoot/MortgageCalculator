@@ -67,10 +67,7 @@ public class ExcelData {
             Row row = sheet.createRow(i+1);
 
             Cell cell = row.createCell(0);
-            if(annuity)
-                cell.setCellValue(Double.toString(Precision.round(mortgage.getMonthlyPaymentAnnuity()[i], 2)));
-            else
-                cell.setCellValue(Double.toString(Precision.round(mortgage.getMonthlyPaymentLinear()[i], 2)));
+            cell.setCellValue(Double.toString(Precision.round(mortgage.getMonthlyPayment()[i], 2)));
             cell.setCellStyle(style);
 
             cell = row.createCell(1);

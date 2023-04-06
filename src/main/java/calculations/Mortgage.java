@@ -54,15 +54,6 @@ public class Mortgage {
     public void setDelayInterest(double delayInterest){
         this.delayInterest = delayInterest;
     }
-    public void setMonthlyPaymentAnnuity(double[] monthlyPayment){
-        this.monthlyPayment = monthlyPayment;
-    }
-
-    public void setMonthlyPaymentLinear(double[] monthlyPayments){
-        this.monthlyPayments = monthlyPayments;
-    }
-
-
     public void setMonthlyPayment(double[] monthlyPayments){
         this.monthlyPayments = monthlyPayments;
     }
@@ -138,13 +129,6 @@ public class Mortgage {
     public double getDelayInterest(){
         return delayInterest;
     }
-    public double[] getMonthlyPaymentAnnuity(){
-        return monthlyPayment;
-    }
-    public double[] getMonthlyPaymentLinear(){
-        return monthlyPayments;
-    }
-
     public double[] getMonthlyPayment(){return monthlyPayments;}
 
     public double getTotalPayment(){

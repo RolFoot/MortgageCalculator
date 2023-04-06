@@ -127,10 +127,13 @@ public class MainController {
         }*/
 
         mortgage.setMonthlyPayment(calculations.calculateMonthlyPayment(mortgage));
+        mortgage.setMonthlyBalance(calculations.loanBalance(mortgage));
+        mortgage.setLoanPart(calculations.calculateLoanPart(mortgage));
+        mortgage.setInterestPart(calculations.calculateInterestPart(mortgage));
 
-        for(int i = 0; i < mortgage.getLoanTerm(); i++) {
-            System.out.println(mortgage.getMonthlyPayment()[i]);
-        }
+
+        calculated = true;
+
     }
 
     public void export() throws IOException {

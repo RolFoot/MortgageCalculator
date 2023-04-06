@@ -59,34 +59,10 @@ public class Calculations {
         return monthlyPayments;
     }
 
-
-    public double[] calculateLoanPartAnnuity(Mortgage mortgage) {
+    public double[] calculateLoanPart(Mortgage mortgage) {
         // Loan part (%)
 
-        double[] monthlyPayment = mortgage.getMonthlyPaymentAnnuity();
-        double[] loanPart = new double[mortgage.getLoanTerm()];
-
-        double interest = mortgage.getInterest() / 100 / MONTHS_IN_YEAR;
-
-        double[] monthlyBalance = mortgage.getMonthlyBalance();
-
-        int delayFrom = mortgage.getDelayFrom();
-        int delayTo = mortgage.getDelayTo();
-
-        for (int i = 0; i < mortgage.getLoanTerm(); i++) {
-            if ((i >= delayFrom && i <= delayTo) && (delayTo - delayFrom > 0))
-                loanPart[i] = 0;
-            else
-                loanPart[i] = (monthlyPayment[i] - (monthlyBalance[i] * interest)) / monthlyPayment[i] * 100;
-        }
-
-        return loanPart;
-    }
-
-    public double[] calculateLoanPartLinear(Mortgage mortgage) {
-        // Loan part (%)
-
-        double[] monthlyPayments = mortgage.getMonthlyPaymentLinear();
+        double[] monthlyPayments = mortgage.getMonthlyPayment();
         int term = mortgage.getLoanTerm();
         double[] loanPart = new double[term];
 
@@ -107,38 +83,13 @@ public class Calculations {
         return loanPart;
     }
 
-    public double[] calculateInterestPartAnnuity(Mortgage mortgage) {
+    public double[] calculateInterestPart(Mortgage mortgage) {
         // Interest part (%)
 
         double[] interestPart = new double[mortgage.getLoanTerm()];
         double interest = mortgage.getInterest() / 100 / MONTHS_IN_YEAR;
 
-        double[] monthlyPayment = mortgage.getMonthlyPaymentAnnuity();
-
-        double[] monthlyBalance = mortgage.getMonthlyBalance();
-
-        double[] loanPart = mortgage.getLoanPart();
-
-        int delayFrom = mortgage.getDelayFrom();
-        int delayTo = mortgage.getDelayTo();
-
-        for (int i = 0; i < mortgage.getLoanTerm(); i++) {
-            if ((i >= delayFrom && i <= delayTo) && (delayTo - delayFrom > 0))
-                interestPart[i] = 0;
-            else
-                interestPart[i] = (monthlyPayment[i] - (loanPart[i] / 100 * monthlyPayment[i])) / monthlyPayment[i] * 100;
-        }
-
-        return interestPart;
-    }
-
-    public double[] calculateInterestPartLinear(Mortgage mortgage) {
-        // Interest part (%)
-
-        double[] interestPart = new double[mortgage.getLoanTerm()];
-        double interest = mortgage.getInterest() / 100 / MONTHS_IN_YEAR;
-
-        double[] monthlyPayment = mortgage.getMonthlyPaymentLinear();
+        double[] monthlyPayment = mortgage.getMonthlyPayment();
 
         double[] loanPart = mortgage.getLoanPart();
 
@@ -156,40 +107,12 @@ public class Calculations {
 
     }
 
-    public double[] loanBalanceAnnuity(Mortgage mortgage) {
+    public double[] loanBalance(Mortgage mortgage) {
         double interest = mortgage.getInterest() / 100 / MONTHS_IN_YEAR;
         double value = mortgage.getValue() - mortgage.getDownPayment();
         int term = mortgage.getLoanTerm();
 
-        double[] monthlyPayment = mortgage.getMonthlyPaymentAnnuity();
-
-        // Loan Balance = Previous Loan Balance - Monthly Payment + (Previous Loan Balance * Monthly Interest Rate)
-
-        double[] balance = new double[term];
-        balance[0] = value;
-        double monthlyInterest;
-
-        int delayFrom = mortgage.getDelayFrom();
-        int delayTo = mortgage.getDelayTo();
-
-        for (int i = 1; i < term; i++) {
-            if ((i >= delayFrom && i <= delayTo) && (delayTo - delayFrom > 0)) {
-                balance[i] = balance[i - 1];
-            } else {
-                monthlyInterest = balance[i - 1] * interest;
-                balance[i] = balance[i - 1] - monthlyPayment[i] + monthlyInterest;
-            }
-        }
-
-        return balance;
-    }
-
-    public double[] loanBalanceLinear(Mortgage mortgage) {
-        double interest = mortgage.getInterest() / 100 / MONTHS_IN_YEAR;
-        double value = mortgage.getValue() - mortgage.getDownPayment();
-        int term = mortgage.getLoanTerm();
-
-        double[] monthlyPayment = mortgage.getMonthlyPaymentLinear();
+        double[] monthlyPayment = mortgage.getMonthlyPayment();
 
         // Loan Balance = Previous Loan Balance - Monthly Payment + (Previous Loan Balance * Monthly Interest Rate)
 
@@ -208,7 +131,6 @@ public class Calculations {
 
                 balance[i] = balance[i - 1] - monthlyPayment[i] + monthlyInterest;
             }
-
         }
 
         return balance;
