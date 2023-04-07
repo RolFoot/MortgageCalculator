@@ -147,8 +147,6 @@ public class MainController {
             series1.getData().add(new XYChart.Data<>(i+1, Precision.round(mortgage.getMonthlyPayment()[i], 2)));
             series2.getData().add(new XYChart.Data<>(i+1, Precision.round(((mortgage.getInterestPart()[i]*mortgage.getMonthlyPayment()[i])/100), 2)));
             series3.getData().add(new XYChart.Data<>(i+1, Precision.round(((mortgage.getLoanPart()[i]*mortgage.getMonthlyPayment()[i])/100), 2)));
-
-            System.out.println(i+1 + " " + mortgage.getMonthlyPayment()[i] + " " + mortgage.getInterestPart()[i] + " " + mortgage.getLoanPart()[i]);
         }
         List<XYChart.Series<Integer, Number>> seriesList = Arrays.asList(series2, series1, series3);
         ObservableList<XYChart.Series<Integer, Number>> observableSeriesList = FXCollections.observableList(seriesList);

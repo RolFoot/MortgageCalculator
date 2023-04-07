@@ -60,8 +60,6 @@ public class ExcelData {
         CellStyle style = workbook.createCellStyle();
         style.setWrapText(true);
 
-        boolean annuity = mortgage.getIsAnnuity();
-
         for(int i=0;i<(mortgage.getLoanTerm());i++)
         {
             Row row = sheet.createRow(i+1);
@@ -87,7 +85,7 @@ public class ExcelData {
         // Save to file
         File currDir = new File(".");
         String path = currDir.getAbsolutePath();
-        String fileLocation = path.substring(0, path.length() - 1) + "output/report.xlsx";
+        String fileLocation = path.substring(0, path.length() - 1) + "out/report.xlsx";
 
 
         FileOutputStream outputStream = new FileOutputStream(fileLocation);
