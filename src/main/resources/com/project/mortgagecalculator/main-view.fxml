@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
@@ -67,7 +66,7 @@
             <Font size="22.0" />
          </font>
       </RadioButton>
-      <Button fx:id="calculateBtn" layoutX="151.0" layoutY="427.0" mnemonicParsing="false" onAction="#calculate" prefHeight="85.0" prefWidth="134.0" text="Calculate">
+      <Button layoutX="151.0" layoutY="427.0" mnemonicParsing="false" onAction="#calculate" prefHeight="85.0" prefWidth="134.0" text="Calculate">
          <font>
             <Font size="22.0" />
          </font>
@@ -82,9 +81,9 @@
             <Font size="22.0" />
          </font>
       </Text>
-      <LineChart fx:id="chart" layoutX="330.0" layoutY="15.0" prefHeight="400.0" prefWidth="552.0">
+      <LineChart fx:id="chart" layoutX="330.0" layoutY="11.0" prefHeight="404.0" prefWidth="552.0" title="Mortgage Chart">
         <xAxis>
-          <CategoryAxis side="BOTTOM" />
+          <NumberAxis side="BOTTOM"/>
         </xAxis>
         <yAxis>
           <NumberAxis side="LEFT" />
@@ -100,7 +99,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button fx:id="exportBtn" layoutX="538.0" layoutY="427.0" mnemonicParsing="false" onAction="#export" prefHeight="85.0" prefWidth="184.0" text="Export to Excel">
+      <Button layoutX="538.0" layoutY="427.0" mnemonicParsing="false" onAction="#export" prefHeight="85.0" prefWidth="184.0" text="Export to Excel">
          <font>
             <Font size="22.0" />
          </font>
@@ -115,7 +114,7 @@
             <Font size="22.0" />
          </font>
       </Text>
-      <Button fx:id="viewBtn" layoutX="967.0" layoutY="456.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="160.0" text="View in chart">
+      <Button layoutX="967.0" layoutY="456.0" mnemonicParsing="false" onAction="#viewChart" prefHeight="46.0" prefWidth="160.0" text="View in chart">
          <font>
             <Font size="22.0" />
          </font>
