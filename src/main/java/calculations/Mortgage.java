@@ -12,13 +12,7 @@ public class Mortgage {
     private int delayFrom;
     private int delayTo;
     private double delayInterest;
-    private double[] monthlyPayment;
     private double[] monthlyPayments;
-    private double totalPayment;
-    private double totalInterest;
-    private double totalDelay;
-    private double totalFilter;
-    private double totalSum;
 
     private double[] monthlyBalance;
 
@@ -56,22 +50,6 @@ public class Mortgage {
     }
     public void setMonthlyPayment(double[] monthlyPayments){
         this.monthlyPayments = monthlyPayments;
-    }
-
-    public void setTotalPayment(double totalPayment){
-        this.totalPayment = totalPayment;
-    }
-    public void setTotalInterest(double totalInterest){
-        this.totalInterest = totalInterest;
-    }
-    public void setTotalDelay(double totalDelay){
-        this.totalDelay = totalDelay;
-    }
-    public void setTotalFilter(double totalFilter){
-        this.totalFilter = totalFilter;
-    }
-    public void setTotalSum(double totalSum){
-        this.totalSum = totalSum;
     }
 
     public void setAnnuity(boolean isAnnuity){
@@ -130,22 +108,6 @@ public class Mortgage {
         return delayInterest;
     }
     public double[] getMonthlyPayment(){return monthlyPayments;}
-
-    public double getTotalPayment(){
-        return totalPayment;
-    }
-    public double getTotalInterest(){
-        return totalInterest;
-    }
-    public double getTotalDelay(){
-        return totalDelay;
-    }
-    public double getTotalFilter(){
-        return totalFilter;
-    }
-    public double getTotalSum(){
-        return totalSum;
-    }
     public double[] getMonthlyBalance(){return monthlyBalance;}
 
     public double[] getLoanPart(){
