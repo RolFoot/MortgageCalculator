@@ -1,7 +1,7 @@
 Mortgage Calculator
 ===================
 
-This is a simple GUI mortgage calculator written in Java using JavaFX. It allows users to input various parameters such as the desired loan amount, loan term in years and months, repayment schedule (either Annuity or Linear), and annual interest rate.
+This is a simple GUI mortgage calculator written in Java using JavaFX. It allows users to input various parameters such as the desired loan amount, downpayment amount, loan term in years, repayment schedule (either Annuity or Linear), and annual interest rate.
 
 ## Features
 The program provides the following features:
