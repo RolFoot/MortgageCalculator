@@ -24,7 +24,7 @@ The program will calculate the monthly payment, remaining balance, and generate 
 
 ## Example Screenshots
 
-![Example 1](screenshots/screen1.png)
-![Example 2](screenshots/screen2.png)
-![Example 3](screenshots/screen3.png)
-![Example 4](screenshots/screen4.png)
+![Example 1](https://github.com/RolFoot/MortgageCalculator/blob/main/screenshots/screen1.PNG)
+![Example 2](https://github.com/RolFoot/MortgageCalculator/blob/main/screenshots/screen2.PNG)
+![Example 3](https://github.com/RolFoot/MortgageCalculator/blob/main/screenshots/screen3.PNG)
+![Example 4](https://github.com/RolFoot/MortgageCalculator/blob/main/screenshots/screen4.PNG)
